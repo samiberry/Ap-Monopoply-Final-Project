@@ -120,13 +120,34 @@ public class Board {
         propertyList.add(new Property(IProperty.PROPERTY,"Vermont Ave.", PropertyColor.LIGHT_BLUE, 100));
         propertyList.add(new Property(IProperty.PROPERTY,"Connecticut Ave.", PropertyColor.LIGHT_BLUE, 120));
         propertyList.add(new Property(IProperty.PROPERTY,"Just Visiting / In Jail", PropertyColor.NONE, 0));
-
+        propertyList.add(new Property(IProperty.PROPERTY,"St. Charles Place", PropertyColor.VIOLET, 140));
+        propertyList.add(new Property(IProperty.PROPERTY,"Electric Company", PropertyColor.NONE, 0));
+        propertyList.add(new Property(IProperty.PROPERTY,"States Avenue", PropertyColor.VIOLET, 140));
+        propertyList.add(new Property(IProperty.PROPERTY,"Virginia Avenue", PropertyColor.VIOLET, 160));
+        propertyList.add(new Property(IProperty.PROPERTY,"Pennsylvania Railroad", PropertyColor.NONE, 200));
+        propertyList.add(new Property(IProperty.PROPERTY,"St. James Place", PropertyColor.ORANGE, 180));
+        propertyList.add(new Property(IProperty.COMMUNITY_CHEST,"Community Chest", PropertyColor.NONE, 0));
+        propertyList.add(new Property(IProperty.PROPERTY,"Tennessee Avenue", PropertyColor.ORANGE, 180));
+        propertyList.add(new Property(IProperty.PROPERTY,"New York Avenue", PropertyColor.ORANGE, 200));
         propertyList.add(new Property(IProperty.PROPERTY, "Free Parking", PropertyColor.NONE, 0));
-
-
-
+        propertyList.add(new Property(IProperty.PROPERTY,"Kentucky Avenue", PropertyColor.RED, 220));
+        propertyList.add(new Property(IProperty.CHANCE,"Chance ? ", PropertyColor.NONE, 0));
+        propertyList.add(new Property(IProperty.PROPERTY,"Indiana Avenue", PropertyColor.RED, 220));
+        propertyList.add(new Property(IProperty.PROPERTY,"Illinois Avenue", PropertyColor.RED, 240));
+        propertyList.add(new Property(IProperty.CHANCE,"B. & O. Railroad", PropertyColor.NONE, 200));
+        propertyList.add(new Property(IProperty.PROPERTY,"Atlantic Avenue", PropertyColor.YELLOW, 260));
+        propertyList.add(new Property(IProperty.PROPERTY,"Ventor Avenue", PropertyColor.YELLOW, 260));
+        propertyList.add(new Property(IProperty.CHANCE,"Water Works", PropertyColor.NONE, 150));
+        propertyList.add(new Property(IProperty.PROPERTY,"Marvin Gardens", PropertyColor.YELLOW, 280));
         propertyList.add(new Property(IProperty.GO_TO_JAIL,"Go To Jail", PropertyColor.NONE, 0));
-
+        propertyList.add(new Property(IProperty.CHANCE,"Pacific Avenue", PropertyColor.GREEN, 300));
+        propertyList.add(new Property(IProperty.CHANCE,"North Carolina Avenue", PropertyColor.GREEN, 300));
+        propertyList.add(new Property(IProperty.COMMUNITY_CHEST,"Community Chest", PropertyColor.NONE, 0));
+        propertyList.add(new Property(IProperty.CHANCE,"Pennsylvania Avenue", PropertyColor.GREEN, 350));
+        propertyList.add(new Property(IProperty.CHANCE,"Short Line Railroad", PropertyColor.NONE, 200));
+        propertyList.add(new Property(IProperty.CHANCE,"Park Place", PropertyColor.GREEN, 350));
+        propertyList.add(new Property(IProperty.INCOME_TAX,"Income Tax", PropertyColor.NONE, 100));
+        propertyList.add(new Property(IProperty.CHANCE,"Boardwalk", PropertyColor.GREEN, 400));
         return propertyList;
     }
 
