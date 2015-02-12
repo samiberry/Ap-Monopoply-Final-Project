@@ -36,7 +36,7 @@ public class Game {
                 turn.go( player, board, bank );
             }
         }
-
+        System.out.println( "Game Over");
         // now go thru the list and display the player properties and currency like printPlayer
         for ( Player player : players ) {
             printEndingPlayer( player );

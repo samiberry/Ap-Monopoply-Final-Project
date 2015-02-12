@@ -28,6 +28,30 @@ public class Player {
         return playerPiece;
     }
 
+    public boolean deduct(int amount) {
+        // calculate total money player has
+        if (amount > getCash()) {
+            return false;
+        } else {
+            System.out.println("Deducted $" + amount + " from "+ playerPiece.toString()+" account");
+            return true;
+        }
+    }
+
+    public void add(int amount) {
+        System.out.println("Added $" + amount + " to player account");
+
+    }
+
+    private int getCash() {
+        int amount =0;
+        for (Money cash: money) {
+            amount += cash.getValue();
+        }
+
+        return amount;
+    }
+
     public void setPlayerPiece(PlayerPiece playerPiece) {
         this.playerPiece = playerPiece;
     }

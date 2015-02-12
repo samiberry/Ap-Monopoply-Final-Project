@@ -1,15 +1,14 @@
 package homework.action;
 
-import java.util.Scanner;
-
 import homework.Board;
 import homework.IProperty;
 import homework.Player;
+import homework.model.Bank;
 import homework.model.Card;
 import homework.model.Die;
 import homework.model.Money;
 import homework.model.Property;
-import homework.model.Bank;
+import java.util.Scanner;
 
 public class TakeTurn {
 
@@ -24,21 +23,21 @@ public class TakeTurn {
         int index = board.getPropertyList().indexOf( currentProperty );
 
         int newLocation = moves + index;
-        if (newLocation > board.getPropertyList().size()) {
-            newLocation = newLocation -board.getPropertyList().size();
+        if ( newLocation > board.getPropertyList().size() ) {
+            newLocation = newLocation - board.getPropertyList().size();
         }
 
         Property newProperty = board.getPropertyList().get( newLocation );
         player.setCurrentProperty( newProperty );
 
-        handlePropertyType(newProperty, player, board, bank);
+        handlePropertyType( newProperty, player, board, bank );
 
         return moves;
     }
 
     private void handlePropertyType(Property property, Player player, Board board, Bank bank) {
         if ( property.getPropertyType().equalsIgnoreCase( IProperty.GO_TO_JAIL ) ) {
-            System.out.println(player.getPlayerPiece().toString() + "  landed on Go To Jail!" );
+            System.out.println( player.getPlayerPiece().toString() + "  landed on Go To Jail!" );
         } else if ( property.getPropertyType().equalsIgnoreCase( IProperty.INCOME_TAX ) ) {
             System.out.println( player.getPlayerPiece().toString() + " landed on Income tax, you lose $" + property.getPrice() + "!" );
             player.getMoney().remove( Money.ONE_HUNDRED );
@@ -53,28 +52,39 @@ public class TakeTurn {
             System.out.println( player.getPlayerPiece().toString() + " landed on Community Chest, your card is:" + communityCard.getText() );
         } else if ( property.getPropertyType().equalsIgnoreCase( IProperty.PROPERTY ) ) {
 
-            System.out.println(player.getPlayerPiece().toString() +  " landed on " + property.getName() );
-            if (bank.getPropertyList().contains( property ) ) {
-                System.out.println("Would you like to buy this property for $" + property.getPrice());
-                Scanner scanner = new Scanner(System.in);
-                scanner.useDelimiter(System.getProperty("lines.separator"));
-                while(scanner.hasNext())
-                {
-                	System.out.println("Would you like to buy this property for $" + property.getPrice());
-                	String input = scanner.next();
-                	if(input.equalsIgnoreCase("yes"))
-                	{
-                		
-                		player.getPropertyList().add(property);
-                	}
+            System.out.println( player.getPlayerPiece().toString() + " landed on " + property.getName() );
+            if ( bank.getPropertyList().contains( property ) ) {
+                System.out.println( "Would you like to buy this property for $" + property.getPrice() + "? enter yes or no" );
+                Scanner scanner = new Scanner( System.in );
+                scanner.useDelimiter( System.getProperty( "line.separator" ) );
+                while ( scanner.hasNextLine() ) {
+                    String input = scanner.nextLine();
+                    if ( input.equalsIgnoreCase( "yes" ) ) {
+                        updatePlayer( player, property, bank );
+                        break;
+                    }
+                    else {
+                        break;
+                    }
                 }
-
-               // do the scanner piece here for y/n
-                // if yes, then remove $200 from their account like we did above on Income Tax
             } else {
-                System.out.println("This property is already owned, please pay your rent of $" + property.getPrice());
+                System.out.println( "This property is already owned, please pay your rent of $" + property.getPrice() );
             }
         }
 
     }
+
+    private void updatePlayer(Player player, Property property, Bank bank) {
+
+        if (player.deduct( property.getPrice() )) {
+            player.add( property.getPrice() );
+            player.getPropertyList().add( property );
+            bank.getPropertyList().remove( property );
+            System.out.println( "Successfully purchased " + property.getName());
+        } else {
+            System.out.println( "Insufficient funds to purchase " + property.getName());
+        }
+    }
+
+
 }

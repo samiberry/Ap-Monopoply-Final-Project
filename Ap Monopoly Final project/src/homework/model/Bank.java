@@ -8,6 +8,7 @@ public class Bank {
     private List<House> houses = new ArrayList<House>(  );
     private List<Hotel> hotels = new ArrayList<Hotel>(  );
     private List<Property> propertyList = new ArrayList<Property>(  );
+    List<Money> money = new ArrayList<Money>();
 
     private int taxableIncome = 0;
 
@@ -57,5 +58,28 @@ public class Bank {
 
     public void setPropertyList(List<Property> propertyList) {
         this.propertyList = propertyList;
+    }
+
+    public boolean deduct(int amount) {
+        // calculate total money player has
+        if (amount > getCash()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public void add(int amount) {
+        System.out.println("Added $" + amount + " to bank");
+
+    }
+
+    private int getCash() {
+        int amount =0;
+        for (Money cash: money) {
+            amount += cash.getValue();
+        }
+
+        return amount;
     }
 }
