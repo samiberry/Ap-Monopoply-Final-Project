@@ -1,5 +1,7 @@
 package homework.action;
 
+import java.util.Scanner;
+
 import homework.Board;
 import homework.IProperty;
 import homework.Player;
@@ -54,7 +56,20 @@ public class TakeTurn {
             System.out.println(player.getPlayerPiece().toString() +  " landed on " + property.getName() );
             if (bank.getPropertyList().contains( property ) ) {
                 System.out.println("Would you like to buy this property for $" + property.getPrice());
-                // do the scanner piece here for y/n
+                Scanner scanner = new Scanner(System.in);
+                scanner.useDelimiter(System.getProperty("lines.separator"));
+                while(scanner.hasNext())
+                {
+                	System.out.println("Would you like to buy this property for $" + property.getPrice());
+                	String input = scanner.next();
+                	if(input.equalsIgnoreCase("yes"))
+                	{
+                		
+                		player.getPropertyList().add(property);
+                	}
+                }
+
+               // do the scanner piece here for y/n
                 // if yes, then remove $200 from their account like we did above on Income Tax
             } else {
                 System.out.println("This property is already owned, please pay your rent of $" + property.getPrice());
